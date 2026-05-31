@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Available Flights</title>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+<h2>Available Flights</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Flight</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Price</th>
+        <th>Book</th>
+    </tr>
+
+    <tr th:each="flight : ${flights}">
+        <td th:text="${flight.flightName}"></td>
+        <td th:text="${flight.source}"></td>
+        <td th:text="${flight.destination}"></td>
+        <td th:text="${flight.price}"></td>
+
+        <td>
+            <a th:href="@{/book/{id}(id=${flight.flightId})}">
+                Book
+            </a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
